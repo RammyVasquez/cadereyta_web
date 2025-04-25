@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Facturación electrónica para gasolineras: rápida, segura y compatible con el SAT. Simplifica tu proceso hoy.">
+    <title>Gasolinera - Facturación Electrónica</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <img src="assets/images/logo.png" alt="Gasolinera Logo" class="logo">
+            <nav class="nav">
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#facturacion">Facturación</a></li>
+                    <li><a href="#radec">RADEC</a></li>
+                    <li><a href="#precios">Precios</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+            <a href="https://radecsalcido.dyndns.org/facturas/autofactura.aspx/" target="_blank" class="btn btn-nav">Facturar Ahora</a>
+            <button class="menu-toggle" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section (Carousel) -->
+    <section id="inicio" class="hero">
+        <div class="carousel">
+            <div class="carousel-slide active">
+                <img src="assets/images/contact-bg2.jpg" alt="Facturación Electrónica">
+                <div class="carousel-content">
+                    <h1>COMBUSTIBLES MIRAMAR</h1>
+                    <p>Tu destino empieza aquí, nuestro combustible es la clave para llegar a donde quieras.</p>
+                    <a href="#nosotros" class="btn btn-yellow">Conoce Más</a>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <img src="assets/images/bg.avif" alt="Gasolinera Moderna">
+                <div class="carousel-content">
+                    <h1>SERVICIO DE FLOTILLAS</h1>
+                    <p>Optimiza tu negocio con nuestros novedoso sistema RADEC.</p>
+                    <a href="#radec" class="btn btn-yellow">Conoce Más</a>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <img src="assets/images/contact-bg.jpg" alt="Soporte 24/7">
+                <div class="carousel-content">
+                    <h1>Abierto 24/7</h1>
+                    <p>Servicio de Lunes a Domingo las 24 horas.</p>
+                    <a href="#precios" class="btn btn-yellow">Contáctanos</a>
+                </div>
+            </div>
+            <button class="carousel-prev"><i class="fas fa-chevron-left"></i></button>
+            <button class="carousel-next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <!-- Nosotros Section -->
+    <section id="nosotros" class="about">
+        <div class="container">
+            <h2>¿Por Qué Elegirnos?</h2>
+            <p>Tenemos un servicio de calidad y honestidad, combustible clave para llegar a tu destino.</p>
+            <div class="about-content">
+                <div class="about-item">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <h3>Rapidez</h3>
+                    <p>Facturación de tus cargas en la estacion.</p>
+                </div>
+                <div class="about-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Seguridad</h3>
+                    <p>Datos protegidos con los más altos estándares.</p>
+                </div>
+                <div class="about-item">
+                    <i class="fa-regular fa-clock"></i>
+                    <h3>Disponibilidad</h3>
+                    <p>Servicio todos los días y las 24hrs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facturación Section -->
+    <section id="facturacion" class="billing">
+        <div class="container">
+            <h2>Facturación</h2>
+            <p>Emite y gestiona tus facturas de forma rápida, ya sea desde tu casa o desde tu negocio</p>
+            <div class="billing-content">
+                <div class="billing-card">
+                    <i class="fas fa-file-invoice icon"></i>
+                    <h3>Facturación Electrónica Simplificada</h3>
+                    <p>Genera CFDI en segundos o consulta tus facturas realizadas en nuestra plataforma.</p>
+                    <div class="billing-actions">
+                        <a href="https://radecsalcido.dyndns.org/facturas/autofactura.aspx/" target="_blank" class="btn btn-yellow btn-facturar"><i class="fas fa-file-invoice"></i> Facturar</a>
+                        <a href="https://radecsalcido.dyndns.org/facturas" class="btn btn-yellow btn-descargar" target="_blank"><i class="fas fa-download"></i> Consultar Facturas</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RADEC Section -->
+    <section id="radec" class="radec">
+        <div class="container">
+            <h2>Acceso a RADEC</h2>
+            <p>Si ya eres cliente y cuentas con el sistema RADEC, desde aquí podrás ingresar para verificar cada uno de los abastecimientos realizados y otros conceptos. Debes contar con un nombre de usuario y una contraseña proporcionados por Comercializadora de Combustibles Miramar.</p>
+            <button class="btn btn-primary radec-btn" onclick="openModal()">Ingresar a RADEC</button>
+        </div>
+        <!-- Modal -->
+        <div id="radecModal" class="modal">
+            <div class="modal-content">
+                <span class="modal-close" onclick="closeModal()">×</span>
+                <h3>Red de Apoyo RADEC</h3>
+                <div class="modal-grid">
+                    <div class="modal-card">
+                        <a href="https://radecsalcido.dyndns.org/radecred" target="_blank"><img src="assets/images/radec-icon.png" alt="RADEC" class="modal-img"></a>
+                        <h4>RADEC</h4>
+                        <p>Manejo de flotillas, control de cartera de crédito, control de débito (prepago), facturación electrónica CFDI, El método de identificación con chip mas fácil y seguro del mercado.</p>
+                    </div>
+                    <div class="modal-card">
+                        <a href="https://www.cadisaenlinea.com.mx/cadisaenlinea/" target="_blank"><img src="assets/images/Cadisa_Logotipo.png" alt="Controles Administrativos" class="modal-img"></a>
+                        <h4>Controles Administrativos</h4>
+                        <p>En Controles Administrativos Integrales S.A. de C.V., “CADISA”, nuestro Sistema de Control Volumétrico contempla a todos los involucrados en la cadena de hidrocarburos.</p>
+                    </div>
+                </div>
+                <a href="#contacto" class="btn btn-primary" onclick="closeModal()">Contáctanos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Precios Section -->
+    <section id="precios" class="prices">
+        <div class="container">
+            <h2>Precios Actuales de Combustibles</h2>
+            <p>Consulta los precios actualizados de nuestros combustibles (<span id="price-date">actualizados al 25 de abril de 2025</span>).</p>
+            <div class="prices-content">
+                <div class="price-item magna">
+                    <h3>Magna</h3>
+                    <p id="price-magna">$23.50 / litro</p>
+                </div>
+                <div class="price-item premium">
+                    <h3>Premium</h3>
+                    <p id="price-premium">$25.80 / litro</p>
+                </div>
+                <div class="price-item diesel">
+                    <h3>Diésel</h3>
+                    <p id="price-diesel">$24.90 / litro</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto Section -->
+    <section id="contacto" class="contact">
+        <div class="container">
+            <h2>Contáctanos</h2>
+            <div class="contact-content">
+                <form class="contact-form" action="mailto:ramurquijo@cgmail.com?subject=Mensaje%20desde%20el%20formulario%20de%20contacto" method="POST" enctype="text/plain">
+                    <input type="text" name="Nombre" placeholder="Nombre" required>
+                    <input type="email" name="Correo" placeholder="Correo Electrónico" required>
+                    <input type="tel" name="Celular" placeholder="Celular" required pattern="[0-9]{10}">
+                    <textarea name="Mensaje" placeholder="Mensaje" required></textarea>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </form>
+                <!-- Modal de Confirmación -->
+                <div id="formSuccessModal" class="modal">
+                    <div class="modal-content">
+                        <span class="modal-close" onclick="closeFormModal()">×</span>
+                        <h3>¡Mensaje Enviado!</h3>
+                        <p>Tu mensaje ha sido procesado con éxito. Se abrirá tu cliente de correo para completar el envío.</p>
+                        <button class="btn btn-primary" onclick="closeFormModal()">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="contact-map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3598.5385088450225!2d-100.03086862403086!3d25.587016115800246!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8662db0fe00afceb%3A0x51162b785114b793!2sCOMERCIALIZADORA%20DE%20COMBUSTIBLES%20MIRAMAR!5e0!3m2!1ses!2smx!4v1745611868242!5m2!1ses!2smx" width="100%" height="700" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 Gasolinera. Todos los derechos reservados.</p>
+            <div class="station-contact">
+                <p><i class="fas fa-phone-alt"></i> Estación de Servicio: <a href="tel:+8123434767">81 2343 4767</a></p>
+            </div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=61554324872978" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

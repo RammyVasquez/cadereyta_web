@@ -1,0 +1,885 @@
+/* Variables */
+:root {
+    --primary-color: #c62828; /* Rojo vibrante */
+    --secondary-color: #ffffff; /* Blanco */
+    --accent-color: #0d47a1; /* Azul moderno */
+    --highlight-color: #ffca28; /* Amarillo cálido */
+    --background-color: #f5f5f5; /* Fondo claro */
+    --text-color: #212121; /* Gris oscuro */
+    --magna-color: #2e7d32; /* Verde Magna */
+    --premium-color: #c62828; /* Rojo Premium */
+    --diesel-color: #212121; /* Negro Diésel */
+}
+
+/* General Styles */
+body {
+    background: var(--background-color);
+    color: var(--text-color);
+    overflow-x: hidden;
+}
+
+/* Container */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+.header {
+    background: var(--secondary-color);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    padding: 25px 0;
+}
+
+.header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    height: 70px;
+}
+
+.nav ul {
+    display: flex;
+    gap: 40px;
+}
+
+.nav a {
+    color: var(--accent-color);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.nav a:hover {
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.nav a.active {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.btn-nav {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: 700;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.btn-nav:hover {
+    background: #b71c1c;
+    transform: scale(1.05);
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 30px;
+    color: var(--accent-color);
+    cursor: pointer;
+}
+
+/* Hero (Carousel) */
+.hero {
+    margin-top: 100px;
+    min-height: 700px;
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-slide {
+    display: none;
+    width: 100%;
+    height: 700px;
+    position: relative;
+}
+
+.carousel-slide.active {
+    display: block;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.7);
+}
+
+.carousel-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+    z-index: 1;
+}
+
+.carousel-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: var(--secondary-color);
+    z-index: 2;
+}
+
+.carousel-content h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 72px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+    animation: fadeInUp 1s ease-out;
+}
+
+.carousel-content p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation: fadeInUp 1.2s ease-out;
+}
+
+.carousel-prev,
+.carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: var(--secondary-color);
+    font-size: 24px;
+    padding: 15px;
+    cursor: pointer;
+    transition: background 0.3s;
+    z-index: 2;
+}
+
+.carousel-prev:hover,
+.carousel-next:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-prev {
+    left: 20px;
+}
+
+.carousel-next {
+    right: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 16px 32px;
+    border-radius: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.btn-primary:hover {
+    background: #b71c1c;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn-yellow {
+    background: var(--highlight-color);
+    color: var(--text-color);
+}
+
+.btn-yellow:hover {
+    background: #ffb300;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn i {
+    margin-right: 8px;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOutDown {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+}
+
+/* About */
+.about {
+    padding: 100px 20px;
+    background: var(--background-color);
+}
+
+.about h2 {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 48px;
+    color: var(--accent-color);
+    margin-bottom: 40px;
+}
+
+.about p {
+    text-align: center;
+    font-size: 20px;
+    max-width: 800px;
+    margin: 0 auto 40px;
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+}
+
+.about-item {
+    background: linear-gradient(135deg, #ffffff, #f0f0f0);
+    padding: 40px;
+    border-radius: 15px;
+    border: 1px solid var(--accent-color);
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.about-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+}
+
+.about-item i {
+    font-size: 60px;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    transition: transform 0.3s;
+}
+
+.about-item:hover i {
+    transform: scale(1.1);
+}
+
+.about-item h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+}
+
+.about-item p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text-color);
+}
+
+/* Billing */
+.billing {
+    padding: 100px 20px;
+    background: linear-gradient(135deg, var(--secondary-color), var(--background-color));
+}
+
+.billing h2 {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 48px;
+    color: var(--accent-color);
+    margin-bottom: 40px;
+}
+
+.billing p {
+    text-align: center;
+    font-size: 20px;
+    max-width: 800px;
+    margin: 0 auto 40px;
+}
+
+.billing-content {
+    display: flex;
+    justify-content: center;
+}
+
+.billing-card {
+    background: linear-gradient(135deg, #ffffff, #f0f0f0);
+    padding: 50px;
+    border-radius: 20px;
+    border: 1px solid var(--accent-color);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.billing-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+}
+
+.billing-card .icon {
+    font-size: 60px;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    transition: transform 0.3s;
+}
+
+.billing-card:hover .icon {
+    transform: scale(1.1);
+}
+
+.billing-card h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+}
+
+.billing-card p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text-color);
+    margin-bottom: 40px;
+}
+
+.billing-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+.btn-facturar,
+.btn-descargar {
+    padding: 20px 40px;
+    font-size: 20px;
+}
+
+/* RADEC */
+.radec {
+    padding: 120px 20px;
+    background: var(--background-color);
+}
+
+.radec h2 {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 48px;
+    color: var(--accent-color);
+    margin-bottom: 40px;
+}
+
+.radec p {
+    text-align: center;
+    font-size: 20px;
+    max-width: 900px;
+    margin: 0 auto 40px;
+    line-height: 1.8;
+}
+
+.radec-btn {
+    display: block;
+    margin: 0 auto;
+    padding: 20px 40px;
+    font-size: 20px;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: var(--secondary-color);
+    padding: 40px;
+    border-radius: 15px;
+    max-width: 800px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.modal-content h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 32px;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+}
+
+.modal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin: 20px 0;
+}
+
+.modal-card {
+    background: var(--secondary-color);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--accent-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.modal-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.modal-img {
+    width: 100%;
+    height: 120px;
+    object-fit: contain;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    transition: transform 0.3s;
+}
+
+.modal-card:hover .modal-img {
+    transform: scale(1.05);
+}
+
+.modal-card h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+
+.modal-card p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text-color);
+    line-height: 1.4;
+}
+
+/* Form Success Modal */
+#formSuccessModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+}
+
+#formSuccessModal .modal-content {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 0.5s ease-out;
+}
+
+#formSuccessModal .modal-content h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+}
+
+#formSuccessModal .modal-content p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+#formSuccessModal .modal-content button {
+    padding: 12px 24px;
+    font-size: 16px;
+}
+
+/* Prices */
+.prices {
+    padding: 100px 20px;
+    background: linear-gradient(135deg, var(--secondary-color), var(--background-color));
+}
+
+.prices h2 {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 48px;
+    color: var(--accent-color);
+    margin-bottom: 40px;
+}
+
+.prices p {
+    text-align: center;
+    font-size: 20px;
+    max-width: 800px;
+    margin: 0 auto 40px;
+}
+
+.prices-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+}
+
+.price-item {
+    padding: 40px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    color: var(--secondary-color);
+}
+
+.price-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.price-item.magna {
+    background: var(--magna-color);
+}
+
+.price-item.premium {
+    background: var(--premium-color);
+}
+
+.price-item.diesel {
+    background: var(--diesel-color);
+}
+
+.price-item h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.price-item p {
+    font-size: 18px;
+}
+
+/* Contact */
+.contact {
+    padding: 100px 0;
+    background: linear-gradient(135deg, rgba(13, 71, 161, 0.8), rgba(198, 40, 40, 0.8)), url('../assets/images/contact-bg.jpg') no-repeat center/cover;
+    color: var(--secondary-color);
+}
+
+.contact h2 {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 48px;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.contact-content {
+    max-width: 1000px;
+    margin: 0 auto 60px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 18px;
+    border: 2px solid var(--accent-color);
+    border-radius: 10px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    background: var(--secondary-color);
+    color: var(--text-color);
+    transition: border-color 0.3s;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: #757575;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 200px;
+}
+
+.contact-form button {
+    align-self: center;
+    margin-top: 20px;
+}
+
+.contact-map {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: var(--secondary-color);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.contact-map iframe {
+    border-radius: 15px;
+    display: block;
+}
+
+/* Footer */
+.footer {
+    background: var(--accent-color);
+    color: var(--secondary-color);
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.station-contact {
+    margin: 20px 0;
+    font-size: 18px;
+}
+
+.station-contact a {
+    color: var(--highlight-color);
+    font-weight: 700;
+    transition: color 0.3s;
+}
+
+.station-contact a:hover {
+    color: #ffb300;
+}
+
+.station-contact i {
+    margin-right: 10px;
+}
+
+.social-links {
+    margin-top: 20px;
+}
+
+.social-links a {
+    color: var(--secondary-color);
+    margin: 0 20px;
+    font-size: 28px;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--highlight-color);
+    transform: translateY(-3px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav {
+        display: none;
+        position: absolute;
+        top: 100px;
+        left: 0;
+        width: 100%;
+        background: var(--secondary-color);
+        padding: 20px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .nav.active {
+        display: block;
+    }
+
+    .nav ul {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .nav a {
+        font-size: 16px;
+    }
+
+    .btn-nav {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .carousel-slide {
+        height: 500px;
+    }
+
+    .carousel-content h1 {
+        font-size: 48px;
+    }
+
+    .carousel-content p {
+        font-size: 20px;
+    }
+
+    .btn {
+        font-size: 18px;
+    }
+
+    .about-item h3,
+    .billing-card h3,
+    .modal-card h4 {
+        font-size: 20px;
+    }
+
+    .about-item p,
+    .billing-card p,
+    .modal-card p {
+        font-size: 14px;
+    }
+
+    .about-item i,
+    .billing-card .icon {
+        font-size: 50px;
+    }
+
+    .billing-card {
+        padding: 30px;
+        max-width: 90%;
+    }
+
+    .billing-actions {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .btn-facturar,
+    .btn-descargar {
+        padding: 16px 32px;
+        font-size: 18px;
+    }
+
+    .radec {
+        padding: 80px 20px;
+    }
+
+    .radec-btn {
+        padding: 16px 32px;
+        font-size: 18px;
+    }
+
+    .modal-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-content {
+        padding: 20px;
+        max-width: 90%;
+    }
+
+    #formSuccessModal .modal-content {
+        max-width: 90%;
+        padding: 20px;
+    }
+
+    #formSuccessModal .modal-content h3 {
+        font-size: 20px;
+    }
+
+    #formSuccessModal .modal-content p {
+        font-size: 14px;
+    }
+
+    .contact-content {
+        max-width: 90%;
+        padding: 20px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        font-size: 14px;
+    }
+
+    .contact-map iframe {
+        height: 500px;
+    }
+
+    .station-contact {
+        font-size: 16px;
+    }
+}
