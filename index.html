@@ -174,7 +174,8 @@
                 <!-- Modal de Confirmación -->
                 <div id="formSuccessModal" class="modal">
                     <div class="modal-content">
-                        <span class="modal-close" onclick="closeFormModal()">×</span>
+                        <span class="modal-close" onclick="closeFormModal()" aria-label="Cerrar modal">×</span>
+                        <i class="fas fa-check-circle modal-icon"></i>
                         <h3>¡Mensaje Enviado!</h3>
                         <p>Tu mensaje ha sido procesado con éxito. Se abrirá tu cliente de correo para completar el envío.</p>
                         <button class="btn btn-primary" onclick="closeFormModal()">Cerrar</button>
