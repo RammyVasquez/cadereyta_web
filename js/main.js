@@ -113,9 +113,9 @@ setInterval(nextSlide, 5000);
 // Fetch Fuel Prices Client-Side
 async function fetchFuelPrices() {
     const url = 'https://www.preciogasolina.com.mx/estacion/28517/comercializadora-de-combustibles-miramar-s-a-de-c-v';
-    const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+    const proxyUrl = 'https://api.allorigins.win/raw?url=';
     try {
-        const response = await fetch(proxyUrl + url, {
+        const response = await fetch(proxyUrl + encodeURIComponent(url), {
             headers: {
                 'X-Requested-With': 'XMLHttpRequest'
             }
@@ -138,7 +138,8 @@ async function fetchFuelPrices() {
         document.getElementById('price-magna').textContent = '$23.50 / litro';
         document.getElementById('price-premium').textContent = '$25.80 / litro';
         document.getElementById('price-diesel').textContent = '$24.90 / litro';
-        alert('No se pudieron obtener los precios actualizados. Mostrando precios predeterminados.');
+        // Mostrar mensaje más amigable (opcional)
+        // alert('No se pudieron obtener los precios actualizados. Mostrando precios predeterminados.');
     }
 }
 
