@@ -114,26 +114,8 @@
         <div class="container">
             <h2>Acceso a RADEC</h2>
             <p>Si ya eres cliente y cuentas con el sistema RADEC, desde aquí podrás ingresar para verificar cada uno de los abastecimientos realizados y otros conceptos. Debes contar con un nombre de usuario y una contraseña proporcionados por Comercializadora de Combustibles Miramar.</p>
-            <button class="btn btn-primary radec-btn" onclick="openModal()">Ingresar a RADEC</button>
-        </div>
-        <!-- Modal -->
-        <div id="radecModal" class="modal">
-            <div class="modal-content">
-                <span class="modal-close" onclick="closeModal()">×</span>
-                <h3>Red de Apoyo RADEC</h3>
-                <div class="modal-grid">
-                    <div class="modal-card">
-                        <a href="http://miramar.gasolineraenlinea.com:8081/radecred" target="_blank"><img src="assets/images/radec-icon.png" alt="RADEC" class="modal-img"></a>
-                        <h4>RADEC</h4>
-                        <p>Manejo de flotillas, control de cartera de crédito, control de débito (prepago), facturación electrónica CFDI, El método de identificación con chip mas fácil y seguro del mercado.</p>
-                    </div>
-                    <div class="modal-card">
-                        <a href="https://www.cadisaenlinea.com.mx/cadisaenlinea/" target="_blank"><img src="assets/images/Cadisa_Logotipo.png" alt="Controles Administrativos" class="modal-img"></a>
-                        <h4>Controles Administrativos</h4>
-                        <p>En Controles Administrativos Integrales S.A. de C.V., “CADISA”, nuestro Sistema de Control Volumétrico contempla a todos los involucrados en la cadena de hidrocarburos.</p>
-                    </div>
-                </div>
-                <a href="#contacto" class="btn btn-primary" onclick="closeModal()">Contáctanos</a>
+            <div style="text-align: center;">
+                <a href="http://miramar.gasolineraenlinea.com:8081/radecred/remoto/movil.aspx" target="_blank" class="btn btn-nav">Facturar Ahora</a>
             </div>
         </div>
     </section>
@@ -165,7 +147,7 @@
         <div class="container">
             <h2>Contáctanos</h2>
             <div class="contact-content">
-                <form class="contact-form" action="mailto:ramurquijo@cgmail.com?subject=Mensaje%20desde%20el%20formulario%20de%20contacto" method="POST" enctype="text/plain">
+                <form class="contact-form" action="mailto:vgarcia.ccmiramar@gmail.com?subject=Mensaje%20desde%20el%20formulario%20de%20contacto" method="POST" enctype="text/plain">
                     <input type="text" name="Nombre" placeholder="Nombre" required>
                     <input type="email" name="Correo" placeholder="Correo Electrónico" required>
                     <input type="tel" name="Celular" placeholder="Celular" required pattern="[0-9]{10}">
