@@ -112,10 +112,10 @@ setInterval(nextSlide, 5000);
 
 // Fetch Fuel Prices Client-Side
 async function fetchFuelPrices() {
-    const url = 'https://www.preciogasolina.com.mx/estacion/28517/comercializadora-de-combustibles-miramar-s-a-de-c-v';
-    const proxyUrl = 'https://api.allorigins.win/raw?url=';
+    const url = 'https://petrointelligence.com/sistema/indices/gasolinera.php?permiso=PL/24694/EXP/ES/2022';
+    const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
     try {
-        const response = await fetch(proxyUrl + encodeURIComponent(url), {
+        const response = await fetch(proxyUrl + url, {
             headers: {
                 'X-Requested-With': 'XMLHttpRequest'
             }
@@ -125,23 +125,63 @@ async function fetchFuelPrices() {
         const parser = new DOMParser();
         const doc = parser.parseFromString(text, 'text/html');
 
-        const magna = doc.querySelector('.magna-box')?.textContent.trim().replace('$', '') || '23.50';
-        const premium = doc.querySelector('.premium-box')?.textContent.trim().replace('$', '') || '25.80';
-        const dieselBoxes = doc.querySelectorAll('.diesel-box');
-        const diesel = dieselBoxes[1]?.textContent.trim().replace('$', '') || '24.90';
+        // Buscar la tabla de precios con un enfoque más específico
+        const priceTable = doc.querySelector('.table.table-striped');
+        let magna = 'N/A', premium = 'N/A', diesel = 'N/A';
 
-        document.getElementById('price-magna').textContent = `$${parseFloat(magna).toFixed(2)} / litro`;
-        document.getElementById('price-premium').textContent = `$${parseFloat(premium).toFixed(2)} / litro`;
-        document.getElementById('price-diesel').textContent = `$${parseFloat(diesel).toFixed(2)} / litro`;
+        if (priceTable) {
+            const rows = priceTable.querySelectorAll('tbody tr');
+            rows.forEach(row => {
+                const cells = row.querySelectorAll('td');
+                if (cells.length >= 2) {
+                    const fuelType = cells[0].textContent.trim().toLowerCase();
+                    const price = cells[1].textContent.trim().replace('$', '').replace(',', '') || 'N/A';
+                    if (fuelType.includes('magna')) magna = price;
+                    if (fuelType.includes('premium')) premium = price;
+                    if (fuelType.includes('diésel') || fuelType.includes('diesel')) diesel = price;
+                }
+            });
+        } else {
+            console.warn('Tabla de precios no encontrada');
+        }
+
+        // Asignar precios con formato
+        document.getElementById('price-magna').textContent = magna !== 'N/A' ? `$${parseFloat(magna).toFixed(2)} / litro` : 'N/A';
+        document.getElementById('price-premium').textContent = premium !== 'N/A' ? `$${parseFloat(premium).toFixed(2)} / litro` : 'N/A';
+        document.getElementById('price-diesel').textContent = diesel !== 'N/A' ? `$${parseFloat(diesel).toFixed(2)} / litro` : 'N/A';
     } catch (error) {
         console.error('Error al obtener precios:', error);
-        document.getElementById('price-magna').textContent = '$23.50 / litro';
-        document.getElementById('price-premium').textContent = '$25.80 / litro';
-        document.getElementById('price-diesel').textContent = '$24.90 / litro';
-        // Mostrar mensaje más amigable (opcional)
+        document.getElementById('price-magna').textContent = '$23.39 / litro'; // Valores predeterminados
+        document.getElementById('price-premium').textContent = '$24.60 / litro';
+        document.getElementById('price-diesel').textContent = '$25.91 / litro';
+        // Opcional: Mostrar alerta amigable
         // alert('No se pudieron obtener los precios actualizados. Mostrando precios predeterminados.');
     }
 }
+
+
+// Update Date
+function updateDate() {
+    const today = new Date();
+    const options = { day: 'numeric', month: 'long', year: 'numeric' };
+    const formattedDate = today.toLocaleDateString('es-MX', options);
+    document.getElementById('price-date').textContent = `actualizados al ${formattedDate}`;
+}
+
+// Check for midnight to update date and prices
+function checkMidnight() {
+    const now = new Date();
+    if (now.getHours() === 0 && now.getMinutes() === 0) {
+        updateDate();
+        fetchFuelPrices();
+    }
+}
+
+// Initial load
+updateDate();
+fetchFuelPrices();
+
+setInterval(checkMidnight, 60000);
 
 // Update Date
 function updateDate() {
